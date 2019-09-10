@@ -1,0 +1,84 @@
+@import "./_variables.scss";
+
+/* grid */
+@mixin mk-container($gutter: $grid-gutter-width) {
+  @include mobile {
+    width: 100%;
+  }
+  @include tablet {
+    width: 100%;
+  }
+  @include desktop {
+    width: 1170px;
+  }
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include clearfix;
+}
+/* media */
+@mixin mobile {
+  @media (max-width: $mobile-max) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+/* bem */
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content;
+  }
+}
+@mixin modifier($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+@mixin trans {
+  transition: all 0.3s;
+}
+@mixin btn-primary {
+  background: $color-red;
+  border: 1px solid $color-red;
+  box-shadow: inset 0 0 15px darken($color-red, 10%);
+  color: $color-white;
+  font-size: 16px;
+  padding: 10px 15px;
+
+  &:active,
+  &:active:focus,
+  &:focus,
+  &:hover {
+    color: $color-white;
+    border: 1px solid darken($color-red, 5%);
+    background: darken($color-red, 5%);
+    box-shadow: inset 0 0 15px darken($color-red, 15%);
+    outline: 0;
+  }
+
+  &[disabled] {
+    &:focus,
+    &:hover {
+      border: 1px solid darken($color-red, 5%);
+      background: darken($color-red, 5%);
+    }
+  }
+}

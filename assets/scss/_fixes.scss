@@ -1,0 +1,47 @@
+@import "./_mixins.scss";
+
+.compensate-for-scrollbar {
+  margin-right: 0 !important;
+}
+
+.fancybox {
+  $self: &;
+
+  &-active {
+    overflow: hidden;
+  }
+
+  &-slide--html {
+    @include mainText;
+
+    .grid__logo {
+      display: block;
+      margin: 0 auto 15px;
+    }
+
+    .lead {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    p {
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    #{$self}-content {
+      display: inline-flex !important;
+      flex-flow: column;
+      align-items: center;
+      @include desktop {
+        margin: 0 10rem;
+      }
+      @include tablet {
+        margin: 0 5rem;
+      }
+      @include mobile {
+        padding: 15px;
+      }
+    }
+  }
+}

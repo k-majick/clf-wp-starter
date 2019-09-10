@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+.git/
+_src/
+node_modules/
+dist/
+coverage/

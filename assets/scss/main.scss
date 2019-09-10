@@ -1,0 +1,40 @@
+@import "./vendor/normalize.css";
+@import "./vendor/slick.scss";
+@import "./vendor/jquery.fancybox.min.css";
+@import "./_animate.scss";
+@import "./_fixes.scss";
+@import "./_fonts.scss";
+@import "./_mixins.scss";
+@import "./_variables.scss";
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body,
+html {
+  position: relative;
+  height: 100%;
+  background: $color-red;
+  color: $color-white;
+  font-family: $font-stack;
+  font-size: 100%;
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+a,
+a:link {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    opacity: 1;
+    outline: none;
+    text-decoration: none;
+  }
+}
