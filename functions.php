@@ -1,6 +1,63 @@
 <?php
 require get_template_directory() . '/assets/inc/enqueue.php';
 
+// schedule post slider category
+function schedule_slider_cat() {
+  $now = date("Y-m-d H:i:s");
+	$idObj = get_category_by_slug('slider');
+	$sliderId = $idObj->term_id;
+	$args = array(
+  	'post_type'      => 'post',
+    'posts_per_page' => -1,
+    'numberposts'    => -1,
+    'post_status'    => 'any',
+  );
+  $query = new WP_Query($args);
+  $posts_arr = $query->posts;
+  // $posts_arr = get_posts($args);
+
+	foreach($posts_arr as $my_post) {
+    setup_postdata($my_post);
+		$my_post_id = $my_post->ID;
+    echo $my_post_id;
+		$catsArr = wp_get_post_categories($my_post->ID);
+		$index = array_search($sliderId, $catsArr);
+    $dateFrom = get_field('slider_timer_from', $my_post_id, false, false);
+    $dateTo = get_field('slider_timer_to', $my_post_id, false, false);
+		if ($index == false) {
+      // echo "fff";
+		  if (
+        ((!empty($dateFrom) && $dateFrom < $now) && empty($dateTo)) ||
+        (empty($dateFrom) && (!empty($dateTo) && $dateTo > $now)) ||
+        ((!empty($dateFrom) && $dateFrom < $now) && (!empty($dateTo) && $dateTo > $now))
+      ) {
+        // echo "add";
+			  array_push($catsArr, $sliderId);
+        return wp_set_post_terms($my_post_id, $catsArr, 'category', false);
+		  }
+		}
+		else if ($index == true) {
+      // echo "ttt";
+		  if (
+        (!empty($dateFrom) && $dateFrom > $now) ||
+        (!empty($dateTo) && $dateTo < $now) ||
+        (empty($dateFrom) && empty($dateTo))
+      ) {
+        // echo "unset1";
+  			unset($catsArr[$index]);
+  			return wp_remove_object_terms($my_post_id, $sliderId, 'category');
+		  }
+    }
+    wp_reset_postdata();
+  }
+}
+schedule_slider_cat();
+
+if (!wp_next_scheduled('expire_posts')) {
+  wp_schedule_event(time(), 'hourly', 'expire_posts');
+}
+add_action('expire_posts', 'schedule_slider_cat');
+
 // dashicons
 function load_dashicons_front_end() {
   wp_enqueue_style('dashicons');
