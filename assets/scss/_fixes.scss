@@ -12,8 +12,6 @@
   }
 
   &-slide--html {
-    @include mainText;
-
     .grid__logo {
       display: block;
       margin: 0 auto 15px;
