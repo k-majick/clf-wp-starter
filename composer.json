@@ -1,0 +1,26 @@
+{
+  "name": "k-majick/clf-wp-starter",
+  "authors": [{
+    "name": "k-majick",
+    "email": "studio@cyberleaf.pl"
+  }],
+  "repositories": [{
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+      "../../../../Applications/MAMP/htdocs/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "../../../../Applications/MAMP/htdocs/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "wpackagist-plugin/wordpress-seo": "12.1.*"
+  }
+}

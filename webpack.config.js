@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const myPath = '../wordpress/wp-content/themes/clf-wp-starter-dist/';
+const myPath = '../../../../Applications/MAMP/htdocs/wp-content/themes/clf-wp-starter-dist/';
 
 module.exports = {
   entry: {
