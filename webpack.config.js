@@ -4,11 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-<<<<<<< Updated upstream
-const myPath = '../wordpress/wp-content/themes/clf-wp-starter-dist/';
-=======
 const myPath = '/var/www/html/wp-content/themes/clf-wp-starter-dist/';
->>>>>>> Stashed changes
 
 module.exports = {
   entry: {
