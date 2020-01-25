@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 (function($) {
   $.fn.GeoLocation = function(options) {
 
@@ -227,3 +228,5 @@
 $(document).ready(function() {
   $('div.location').GeoLocation();
 });
+=======
+>>>>>>> Stashed changes
