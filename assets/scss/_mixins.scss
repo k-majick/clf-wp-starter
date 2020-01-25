@@ -1,7 +1,7 @@
 @import "./_variables.scss";
 
 /* grid */
-@mixin mk-container($gutter: $grid-gutter-width) {
+@mixin mk-container {
   @include mobile {
     width: 100%;
   }
@@ -11,12 +11,12 @@
   @include desktop {
     width: 1170px;
   }
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
-  @include clearfix;
 }
 /* media */
 @mixin mobile {
@@ -32,13 +32,6 @@
 @mixin desktop {
   @media (min-width: $desktop-min) {
     @content;
-  }
-}
-@mixin clearfix() {
-  &::after {
-    display: block;
-    content: "";
-    clear: both;
   }
 }
 /* bem */

@@ -1,0 +1,59 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+@import "./_fonts.scss";
+
+.header {
+  background-color: $color-red;
+  @include element(container) {
+    @include mk-container;
+  }
+  @include element(title) {
+    margin: 0;
+  }
+}
+
+.nav {
+  $self: &;
+  @include element(container) {
+    @include mk-container;
+    align-items: flex-end;
+  }
+  @include element(burger) {
+    display: none;
+
+    &:checked ~ #{$self}__menu {
+      display: flex;
+    }
+  }
+  @include element(label) {
+    background: url("../gfx/burger.svg") 50% 50% no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    z-index: 10;
+    @include desktop {
+      display: none;
+      margin-left: 0;
+    }
+  }
+  @include element(menu) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    @include desktop {
+      display: flex;
+      flex-flow: row;
+    }
+  }
+  @include element(item) {
+    a {
+      display: block;
+      padding: 15px;
+    }
+  }
+}

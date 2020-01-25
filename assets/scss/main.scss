@@ -2,6 +2,7 @@
 @import "./_animate.scss";
 @import "./_fixes.scss";
 @import "./_fonts.scss";
+@import "./_header.scss";
 @import "./_mixins.scss";
 @import "./_variables.scss";
 
@@ -12,8 +13,6 @@ body {
 
 body,
 html {
-  position: relative;
-  height: 100%;
   background: $color-black;
   color: $color-white;
   font-family: $font-stack;

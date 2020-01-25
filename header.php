@@ -19,7 +19,29 @@
     <?php wp_head(); ?>
   </head>
   <body>
-    <a id="top"></a>
     <header class="header">
+      <div class="header__container">
+        <a class="header__logo" href="<?php echo home_url(); ?>">
+          <h1 class="header__title">
+            <?php echo get_bloginfo( 'name' ); ?>
+          </h1>
+        </a>
+      </div>
+      <nav class="nav__container">
+        <input class="nav__burger" id="burger" name="burger" type="checkbox">
+        <label class="nav__label" for="burger"></label>
 
+<?php
+$defaults = array(
+  'theme_location' => 'Header Menu',
+  'menu'           => 'Header Menu',
+  'depth'          => 2,
+  'container'      => false,
+  'menu_class' 	   => 'nav__menu',
+);
+wp_nav_menu( $defaults );
+?>
+
+        </nav>
+      </div>
     </header>
