@@ -5,7 +5,7 @@ export default class Navigation {
     this.sections = document.querySelectorAll('.main__section');
     this.nav = document.querySelector('.nav');
     this.headerContainer = document.querySelector('.header__container');
-    this.init(selector);
+    this.init();
   }
 
   init(selector) {
@@ -54,7 +54,7 @@ export default class Navigation {
   }
 
   smoothScroll(menuLinks) {
-    	menuLinks.forEach(menuLink => (menuLink.onclick = this.scrollAnchors));
+    menuLinks.forEach(menuLink => (menuLink.onclick = this.scrollAnchors));
   }
 
   scrollAnchors(e, respond = null) {
@@ -64,7 +64,11 @@ export default class Navigation {
     const targetAnchor = document.querySelector(targetID);
     if (!targetAnchor) return;
     const originalTop = distanceToTop(targetAnchor);
-    window.scrollBy({ top: originalTop, left: 0, behavior: 'smooth' });
+    window.scrollBy({
+      top: originalTop,
+      left: 0,
+      behavior: 'smooth'
+    });
     const checkIfDone = setInterval(function() {
       const atBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2;
       if (distanceToTop(targetAnchor) === 1 || atBottom) {
