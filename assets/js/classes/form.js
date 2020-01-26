@@ -27,8 +27,6 @@ export default class Form {
     let imgHs = this.imgHs;
     let i = 0;
 
-    console.dir(fileInput)
-
     for (let file of files) {
       var reader = new FileReader();
       reader.onload = function(e) {
@@ -58,12 +56,16 @@ export default class Form {
     }
 
     setTimeout(() => {
-      this.validateFiles(fileInput, files, imgWs, imgHs);
+      this.validateFiles();
     }, 100);
 
   }
 
-  validateFiles(fileInput, files, imgWs, imgHs) {
+  validateFiles() {
+    let fileInput = this.fileInput;
+    let files = fileInput.files;
+    let imgWs = this.imgWs;
+    let imgHs = this.imgHs;
 
     Array.from(files).forEach((file) => {
       let fileSize = file.size;
