@@ -1,0 +1,31 @@
+{
+  "name": "k-majick/clf-wp-starter",
+  "authors": [{
+    "name": "k-majick",
+    "email": "studio@cyberleaf.pl"
+  }],
+  "repositories": [{
+    "type": "composer",
+    "url": "https://wpackagist.org"
+  }],
+  "extra": {
+    "installer-paths": {
+      "../../../../Applications/MAMP/htdocs/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "../../../../Applications/MAMP/htdocs/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "wpackagist-plugin/autoptimize": "2.5.1",
+    "wpackagist-plugin/classic-editor": "1.5",
+    "wpackagist-plugin/wordpress-seo": "12.1.*",
+    "wpackagist-plugin/advanced-custom-fields": "5.8.3",
+    "wpackagist-plugin/acf-content-analysis-for-yoast-seo": "2.3.0",
+    "wpackagist-plugin/really-simple-ssl": "3.2.5",
+    "wpackagist-plugin/all-in-one-favicon": "4.7"
+  }
+}
