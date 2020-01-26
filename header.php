@@ -27,7 +27,7 @@
           </h1>
         </a>
       </div>
-      <nav class="nav__container">
+      <nav class="nav">
         <input class="nav__burger" id="burger" name="burger" type="checkbox">
         <label class="nav__label" for="burger"></label>
 
@@ -37,7 +37,7 @@ $defaults = array(
   'menu'           => 'Header Menu',
   'depth'          => 2,
   'container'      => false,
-  'menu_class' 	   => 'nav__menu',
+  'menu_class' 	   => 'nav__container',
 );
 wp_nav_menu( $defaults );
 ?>
