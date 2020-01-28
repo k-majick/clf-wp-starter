@@ -98,4 +98,22 @@ export default class Form {
     });
   }
 
+  sendForm() {
+    let req = new XMLHttpRequest();
+    let fd = new FormData();
+    let url = '';
+
+    fd.append('');
+
+    req.responseType = 'json';
+
+    req.open('GET', url, true);
+    req.onload = function(e) {
+      var jsonResponse = req.response;
+      // do something with jsonResponse
+    };
+
+    req.send(fd);
+  }
+
 }
