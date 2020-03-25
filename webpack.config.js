@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const myPath = '/var/www/html/wp-content/themes/clf-wp-starter-dist/';
+const myPath = '/var/www/html/wp-content/themes/ufficio-primo-dist/';
 
 module.exports = {
   entry: {
@@ -49,13 +49,25 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
+          test: /\.scss$/,
+          use: [{
+              loader: MiniCssExtractPlugin.loader
+          }, {
+              loader: 'css-loader',
+              options: {
+                  sourceMap: true
+              }
+          }, {
+              loader: 'postcss-loader',
+              options: {
+                  sourceMap: true
+              }
+          }, {
+              loader: 'sass-loader',
+              options: {
+                  sourceMap: true
+              }
+          }]
       }
     ]
   },
@@ -66,6 +78,10 @@ module.exports = {
       },
       {
         from: './*.php',
+        to: path.resolve(__dirname, myPath)
+      },
+      {
+        from: './*/*.php',
         to: path.resolve(__dirname, myPath)
       },
       {
