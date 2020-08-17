@@ -3,6 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 // const myPath = '/var/www/html/wp-content/themes/clf-wp-starter/';
 const myPath = '/var/www/clf.com/public_html/wp-content/themes/clf-wp-starter/';
 
@@ -25,7 +27,7 @@ module.exports = {
             new TerserJSPlugin({
                 cache: false,
                 parallel: true,
-                sourceMap: true,
+                // sourceMap: true,
                 terserOptions: {}
             }),
             new OptimizeCSSAssetsPlugin({})
@@ -75,14 +77,17 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin({
+            // cleanStaleWebpackAssets: false
+        }),
         new CopyWebpackPlugin([{
             from: './assets/gfx/',
-            to: path.resolve(__dirname, myPath + 'assets/gfx/')
-        },
+            to: path.resolve(__dirname, myPath, 'assets/gfx/')
+            },
             {
                 from: './',
                 to: path.resolve(__dirname, myPath),
-                ignore: ['.git/**/*', '.git/*.*', './*.js', 'assets/**/*', 'assets/*.*', 'node_modules/**/*', 'node_modules/*.*']
+                ignore: ['.idea/*.*', '.git/**/*', '.git/*.*', '.git*', './*.js', '*.js*', 'assets/**/*', 'assets/*.*', 'node_modules/**/*', 'node_modules/*.*']
             }
         ]),
         new MiniCssExtractPlugin({
